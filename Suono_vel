@@ -1,0 +1,77 @@
+<!-- Mostra il valore della temperatura misurato dal sensore Arduino nano 33 BLE sense.
+Il tempo di percorrenza di un impulso ultrasonico quando colpisce un ostacolo.
+-->
+<phyphox version="1.7" locale="it">
+
+  <title>Temperatura statistica da Arduino</title>
+  
+  <category>Esperimenti con ARDUINO</category>
+  
+  <description>
+    Mostra la temperatura misurata da Arduino in °C e il tempo di percorrenza di un impulso ultrasonico. 
+    Scheda Arduino 33 BLE sense deve essere installato lo scratch "LetturaPulsein" che attiva solo il sensore di pressione. 
+    La configurazione della scheda ha un piccolo difetto il valore del sensore di pressione  viene alterato dalla misura dei valori degli altri sensori. 
+    Questo metodo evita tali interferenze.       
+  </description>
+  
+  <icon>ATs</icon>
+  
+  <color>green</color>
+  
+  <data-containers>
+    <!-- variabili per le letture del sensore -->
+    <container size="0" static="false" init="">tempo_c</container> <!-- Variabile in cui verranno memorizzati i valori di temperatura letti dal sensore -->
+    <container size="0" static="false" init="">temperature</container> <!-- Variabile in cui verranno memorizzati i valori di temperatura letti dal sensore -->
+    <container size="0" static="false" init="">umidita</container> <!-- Variabile in cui verranno memorizzati i valori di umidità letti dal sensore -->
+    <container size="0" static="false" init="">speed_T</container> <!-- Variabile in cui verranno memorizzati i valori di temperatura letti dal sensore -->
+    <container size="0" static="false" init="">tempo</container>     <!-- Variabile in cui verranno memorizzati i valori di tempo letti dal sensore -->
+  </data-containers>
+  
+  <input>
+    <!-- Da arduino a phyphox BLE -->
+    <bluetooth name="Mobile" mode="notification" rate ="1" subscribeOnStart="false" id="Sense">
+      <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="float32LittleEndian" offset="0">tempo_c</output>
+      <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="float32LittleEndian" offset="4">temperature</output>
+      <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="float32LittleEndian" offset="8">umidita</output>
+      <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" conversion="float32LittleEndian" offset="12">speed_T</output>
+      <output char="cddf1002-30f7-4671-8b43-5e40ba53514a" extra="time">tempo</output>
+    </bluetooth>
+  </input>
+  
+  <output></output>
+  
+  <views>   <!-- schermate -->
+    <view label= "Temperatura Arduino">
+      <value label="Temperatura" size="1" precision="3" unit="°C">
+        <input>temperatura</input>
+      </value>
+      <value label="umidità" precision="3" scientific="false" unit="%" factor="1">
+        <input>umidita</input>
+      </value>
+      <value label="Velocità del suono teorica" precision="0" scientific="false" unit="m/s" factor="1">
+        <input>speed_T</input>
+      </value>
+      <value label="tempo necessario all' impulso per colpire il bersaglio" precision="0" scientific="false" unit="s" factor="1">
+        <input>tempo_c</input>
+      </value>
+    </view>
+  </views>
+  
+  <!-- Blocco operazioni -->
+  <analysis sleep="0" onUserInput="false">
+
+  </analysis>
+  
+  <!-- blocco per esportare i dati -->
+  <export>
+    <!--<set name="Temperatura_Arduino">
+      <data name="tempo (s)">tempo</data>
+      <data name="temperatura (°C)">temperatura</data>
+    </set>
+    <set name="Statistica">
+      <data name="Bin start (°C)">binStart</data>
+      <data name="Bin count ">binCount</data>
+    </set> -->
+  </export>
+  
+</phyphox>
