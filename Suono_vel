@@ -3,7 +3,7 @@ Il tempo di percorrenza di un impulso ultrasonico quando colpisce un ostacolo.
 -->
 <phyphox version="1.7" locale="it">
 
-  <title>Temperatura statistica da Arduino</title>
+  <title>Velocita' del suono con Arduino</title>
   
   <category>Esperimenti con ARDUINO</category>
   
