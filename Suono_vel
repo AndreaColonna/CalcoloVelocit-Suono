@@ -14,7 +14,7 @@ Il tempo di percorrenza di un impulso ultrasonico quando colpisce un ostacolo.
     Questo metodo evita tali interferenze.       
   </description>
   
-  <icon>ATs</icon>
+  <icon>ASs</icon>
   
   <color>green</color>
   
@@ -43,7 +43,7 @@ Il tempo di percorrenza di un impulso ultrasonico quando colpisce un ostacolo.
   <views>   <!-- schermate -->
     <view label= "Temperatura Arduino">
       <value label="Temperatura" size="1" precision="3" unit="°C">
-        <input>temperatura</input>
+        <input>temperature</input>
       </value>
       <value label="umidità" precision="3" scientific="false" unit="%" factor="1">
         <input>umidita</input>
